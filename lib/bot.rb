@@ -1,5 +1,6 @@
 # rubocop:disable Metrics/AbcSize
 # rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/BlockLength
 # frozen_string_literal: true
 
 require 'telegram/bot'
@@ -12,7 +13,7 @@ class Bot
     Telegram::Bot::Client.run(token) do |bot|
       bot.listen do |message|
         begin
-          @input = message.text[%r{/([a-zA-Z]+)}]
+          @input = message.text
           puts @input
         rescue StandardError => e
           log.fatal(e)
@@ -21,14 +22,25 @@ class Bot
           case @input
           when '/start'
             bot.api.send_message(chat_id: message.chat.id, text: "Hello #{message.from.first_name}.
-            My job is showing you options to help you decide which kind of printer you need.
+            I´ll show you options to help you decide which kind of printer you need.
             If you want my help please select '/yes' otherwise select '/no'")
           when '/yes'
             bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
-            Select one of our best printers available: " + Printers.show_available.to_s)
-          when '/Opt'
+            Select '/none' to ask for a personal assistant or choose one of our best printers available: " +
+            Printers.show_available.to_s)
+          when '/no'
+            bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
+            One of our assistants will call you to be at your disposal")
+          when '/Opt_A', '/Opt_B', '/Opt_C', '/Opt_D'
             bot.api.send_message(chat_id: message.chat.id, text: "You´ll be redirected to our web page
-            'https://tecnomaniajl.com' in order to finish the sale")
+            'https://tecnomaniajl.com' in order to finish the sale. Thanks for contact us")
+          when '/none'
+            bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
+            It´s been a pleasure, please feel free to call us for any additional assistance")
+          else
+            bot.api.send_message(chat_id: message.chat.id, text: "you choose an invalid option.
+            if you do not follow the links in the chat please feel free to call us and we´ll give you
+              personal assistance or select '/yes' to suggest you our best available products")
           end
         end
       end
@@ -37,3 +49,4 @@ class Bot
 end
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/BlockLength
