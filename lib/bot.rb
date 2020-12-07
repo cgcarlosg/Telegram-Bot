@@ -5,11 +5,21 @@
 
 require 'telegram/bot'
 require_relative '../lib/printers'
+
 # :nodoc:
 class Bot
-  def initialize
-    token = '1473916105:AAELTf_XfjmmePztuIKTfnir_AXJTe8woMo'
+  attr_reader :token
 
+  def initialize
+    @token = '1444483778:AAFVjyColdttvofTA6ArPJQx3JhN1Oy2azc'
+    begin
+      printerfinder_bot
+    rescue Telegram::Bot::Exceptions::ResponseError => e
+      puts "#{e} Bot not connected. Please try again"
+    end
+  end
+
+  def printerfinder_bot
     Telegram::Bot::Client.run(token) do |bot|
       bot.listen do |message|
         @input = message.text
@@ -21,13 +31,22 @@ class Bot
         when '/yes'
           bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
             Select '/none' to ask for a personal assistant or choose one of our best printers available: " +
-          Printers.show_available.to_s)
+            Printers.available.to_s)
         when '/no'
           bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
             One of our assistants will call you to be at your disposal")
-        when '/A', '/B', '/C', '/D'
-          bot.api.send_message(chat_id: message.chat.id, text: "You´ll be redirected to our web page
-            'https://tecnomaniajl.com' in order to finish the sale. Thanks for contact us")
+        when '/Canon'
+          bot.api.send_message(chat_id: message.chat.id, text: "You can click on our best canon product in our web
+            'https://tecnomaniajl.com/Impresora-Canon-G4111-Multifuncional-Wif-Adf-Original-5-Tintas-p217378167'
+             if you want to buy the product. Thanks for contact us")
+        when '/Epson'
+          bot.api.send_message(chat_id: message.chat.id, text: "You can click on our bestseller epson product in our web
+            'https://tecnomaniajl.com/Impresora-EPSON-L3150-Multifuncional-p236063653'
+             if you want to buy the product. Thanks for contact us")
+        when '/HP'
+          bot.api.send_message(chat_id: message.chat.id, text: "You can click on our most complete HP printer in our web
+            'https://tecnomaniajl.com/Impresora-Hp-7740-Multifuncional-p239999030'
+             if you want to buy the product. Thanks for contact us")
         when '/none'
           bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
             It´s been a pleasure, please feel free to call us for any additional assistance")

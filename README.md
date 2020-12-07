@@ -4,11 +4,11 @@
 Telegram-bot, One of the most popular attributes from Telegram it's the possibility of creating your own bot that does whatever you want. On this occasion, I have created a bot that can be added to a store as a tool that helps to make printer sales and through the "Bot" you will be offered the best variety of products at the time of communicating through Telegram with the account of the company that could use this "Bot".
 
 ## 🛠 Built With
-Ruby,
-Ruby gem Telegram-bot,
-Ruby gem Rspec
-Ruby gem Bundle
-Linters
+- Ruby,
+- Ruby gem Telegram-bot,
+- Ruby gem Rspec
+- Ruby gem Bundle
+- Linters
 
 ## 🔧 Getting Started
 To get a local copy up and running follow these steps.
@@ -28,7 +28,7 @@ Run the program with this code : bundle exec ruby bin/main.rb
 Stop the program with: "Ctrl + C" (Windows or Linux) / "Command + C"(Apple)
 
 ## 📝 How to interact with the bot?
-When the program is running go to your page of telegram
+After doing the sutup go to your page of telegram
 
 Search for: @capstone2020Bot
 
@@ -42,10 +42,10 @@ Select the options you need and finish the shown process.
 Microverse Capstone Project - Create a Telegram-bot to run some concepts of Ruby language for learning propose.
 
 ## Run tests
-From the project's root directory, execute 'RSpec' to run the tests
+From the project's root directory, execute 'rspec' to run the tests
 rspec
 
-## 👤 Authors
+## 👤 Author
 👤 Carlos Gutierrez
 
 GitHub: @cgcarlosg
@@ -61,8 +61,8 @@ Feel free to check the issues page.
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
-Microverse
-Odin Project
+![Microverse](https://www.microverse.org/)
+![Odin Project](https://www.theodinproject.com/)
 
 ## 📝 License
 This project is MIT licensed.

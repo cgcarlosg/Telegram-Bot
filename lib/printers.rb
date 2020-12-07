@@ -2,14 +2,15 @@
 
 # :nodoc:
 class Printers
-  attr_reader :cod
+  attr_reader :printer
 
-  @printer = { '/A' => '12000 pg',
-               '/B' => '9000 pg',
-               '/C' => '2000 pg',
-               '/D' => '2000 pg' }
+  @printer = ['/Canon G4111', '/Epson L3150', '/HP 7740', nil]
 
   def self.available
-    @printer.each { |cod, value| }
+    @printer.reject(&:nil?)
+  end
+
+  def self.suggested_printer
+    @printer[1]
   end
 end
