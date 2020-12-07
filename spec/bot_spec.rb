@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require './lib/bot'
 
 RSpec.describe Telegram::Bot do

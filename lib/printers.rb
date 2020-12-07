@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# :nodoc:
 class Printers
   attr_reader :printer
 
