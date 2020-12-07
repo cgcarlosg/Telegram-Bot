@@ -36,7 +36,7 @@ Click on Start
 
 Follow the messages in order to get the information about the best available products to buy
 
-Select the options you need and finish the process.
+Select the options you need and finish the shown process.
 
 ## Usage
 Microverse Capstone Project - Create a Telegram-bot to run some concepts of Ruby language for learning propose.
