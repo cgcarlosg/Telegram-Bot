@@ -16,7 +16,7 @@ class Bot
         case @input
         when '/start'
           bot.api.send_message(chat_id: message.chat.id, text: "Hello #{message.from.first_name}.
-            I´ll show you options to help you decide which kind of printer you need based on the max number of printed pages.
+            I´ll show you the best printer options you may need based on the max number of printed pages.
             If you want my help please select '/yes' otherwise select '/no'")
         when '/yes'
           bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
