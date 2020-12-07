@@ -12,36 +12,29 @@ class Bot
 
     Telegram::Bot::Client.run(token) do |bot|
       bot.listen do |message|
-        begin
-          @input = message.text
-          puts @input
-        rescue StandardError => e
-          log.fatal(e)
-          log.fatal(message.text)
-        else
-          case @input
-          when '/start'
-            bot.api.send_message(chat_id: message.chat.id, text: "Hello #{message.from.first_name}.
+        @input = message.text
+        case @input
+        when '/start'
+          bot.api.send_message(chat_id: message.chat.id, text: "Hello #{message.from.first_name}.
             I´ll show you options to help you decide which kind of printer you need.
             If you want my help please select '/yes' otherwise select '/no'")
-          when '/yes'
-            bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
+        when '/yes'
+          bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
             Select '/none' to ask for a personal assistant or choose one of our best printers available: " +
-            Printers.show_available.to_s)
-          when '/no'
-            bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
+          Printers.show_available.to_s)
+        when '/no'
+          bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
             One of our assistants will call you to be at your disposal")
-          when '/Opt_A', '/Opt_B', '/Opt_C', '/Opt_D'
-            bot.api.send_message(chat_id: message.chat.id, text: "You´ll be redirected to our web page
+        when '/Opt_A', '/Opt_B', '/Opt_C', '/Opt_D'
+          bot.api.send_message(chat_id: message.chat.id, text: "You´ll be redirected to our web page
             'https://tecnomaniajl.com' in order to finish the sale. Thanks for contact us")
-          when '/none'
-            bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
+        when '/none'
+          bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
             It´s been a pleasure, please feel free to call us for any additional assistance")
-          else
-            bot.api.send_message(chat_id: message.chat.id, text: "you choose an invalid option.
+        else
+          bot.api.send_message(chat_id: message.chat.id, text: "you choose an invalid option.
             if you do not follow the links in the chat please feel free to call us and we´ll give you
               personal assistance or select '/yes' to suggest you our best available products")
-          end
         end
       end
     end

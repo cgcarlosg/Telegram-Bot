@@ -8,9 +8,6 @@ class Printers
                '/Opt_B' => 'Ink multifunctional, 9000 pag/ink bottle',
                '/Opt_C' => 'Laser, 2000 pag/Cartridge',
                '/Opt_D' => 'Laser multifunctional, 2000 pag/Cartridge' }
-  def initialize(cod)
-    @cod = cod
-  end
 
   def self.show_available
     @printer.each { |cod, value| }
