@@ -37,7 +37,7 @@ class Bot
             'https://tecnomaniajl.com' if you want to buy any of those producst. Thanks for contact us")
         when '/recommended'
           bot.api.send_message(chat_id: message.chat.id, text: "You can click on our bestseller epson product
-            'https://tecnomaniajl.com/Impresora-EPSON-L3150-Multifuncional-p236063653' to finish the sale. Thanks for contact us")
+            'https://tecnomaniajl.com/Impresora-EPSON-L3150-Multifuncional-p236063653' to finish the sale.")
         else
           bot.api.send_message(chat_id: message.chat.id, text: "you choose an invalid option.
             if you do not follow the links in the chat please feel free to call us and we´ll give you
