@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/AbcSize
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/BlockLength
 
@@ -21,18 +20,17 @@ class Bot
   def printerfinder_bot
     Telegram::Bot::Client.run(token) do |bot|
       bot.listen do |message|
-        @input = message.text
-        case @input
+        case message.text
         when '/start'
           bot.api.send_message(chat_id: message.chat.id, text: "Hello #{message.from.first_name}.
             I´ll show you the best printer options you may need based on the max number of printed pages.
-            If you want my help please select '/yes' or '/no'. To stop the chat please type: /stop")
+            If you want my help please select '/yes' or /stop to finish this chat")
         when '/yes'
           bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
-            Select '/none' for personal assistance or '/recommended' to give you the best printer we have.
+            Select '/stop' for personal assistance or '/recommended' to give you the best printer we have.
             Otherwise choose from our list the model you are looking for: " +
             Printers.available.to_s)
-        when '/no', '/none', '/stop'
+        when '/stop'
           bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
             One of our assistants will call you to be at your disposal or feel free to call us whenever you need!.")
         when '/Canon'
@@ -56,6 +54,5 @@ class Bot
     end
   end
 end
-# rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/BlockLength
