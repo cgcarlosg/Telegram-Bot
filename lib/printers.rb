@@ -4,12 +4,12 @@
 class Printers
   attr_reader :cod
 
-  @printer = { '/Opt_A' => 'Ink, 12000 pag/ink bottle',
-               '/Opt_B' => 'Ink multifunctional, 9000 pag/ink bottle',
-               '/Opt_C' => 'Laser, 2000 pag/Cartridge',
-               '/Opt_D' => 'Laser multifunctional, 2000 pag/Cartridge' }
+  @printer = { '/A' => '12000 pg',
+               '/B' => '9000 pg',
+               '/C' => '2000 pg',
+               '/D' => '2000 pg' }
 
-  def self.show_available
+  def self.available
     @printer.each { |cod, value| }
   end
 end

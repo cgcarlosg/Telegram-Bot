@@ -16,7 +16,7 @@ class Bot
         case @input
         when '/start'
           bot.api.send_message(chat_id: message.chat.id, text: "Hello #{message.from.first_name}.
-            I´ll show you options to help you decide which kind of printer you need.
+            I´ll show you options to help you decide which kind of printer you need based on the max number of printed pages.
             If you want my help please select '/yes' otherwise select '/no'")
         when '/yes'
           bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
@@ -25,7 +25,7 @@ class Bot
         when '/no'
           bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
             One of our assistants will call you to be at your disposal")
-        when '/Opt_A', '/Opt_B', '/Opt_C', '/Opt_D'
+        when '/A', '/B', '/C', '/D'
           bot.api.send_message(chat_id: message.chat.id, text: "You´ll be redirected to our web page
             'https://tecnomaniajl.com' in order to finish the sale. Thanks for contact us")
         when '/none'
