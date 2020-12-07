@@ -32,14 +32,14 @@ class Bot
             Select '/none' for personal assistance or '/recommended' to give you the best printer we have.
             Otherwise choose from our list the model you are looking for: " +
             Printers.available.to_s)
-        when '/no'
+        when '/no', '/none', '/stop'
           bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
-            One of our assistants will call you to be at your disposal")
+            One of our assistants will call you to be at your disposal or feel free to call us whenever you need!.")
         when '/Canon'
           bot.api.send_message(chat_id: message.chat.id, text: "You can click on our best canon product in our web
             'https://tecnomaniajl.com/Impresora-Canon-G4111-Multifuncional-Wif-Adf-Original-5-Tintas-p217378167'
              if you want to buy the product. Thanks for contact us")
-        when '/Epson'
+        when '/Epson', '/recommended'
           bot.api.send_message(chat_id: message.chat.id, text: "You can click on our bestseller epson product in our web
             'https://tecnomaniajl.com/Impresora-EPSON-L3150-Multifuncional-p236063653'
              if you want to buy the product. Thanks for contact us")
@@ -47,16 +47,6 @@ class Bot
           bot.api.send_message(chat_id: message.chat.id, text: "You can click on our most complete HP printer in our web
             'https://tecnomaniajl.com/Impresora-Hp-7740-Multifuncional-p239999030'
              if you want to buy the product. Thanks for contact us")
-        when '/none'
-          bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
-            It´s been a pleasure, please feel free to call us for any additional assistance")
-        when '/recommended'
-          bot.api.send_message(chat_id: message.chat.id, text: "#{message.from.first_name}.
-          the printer recommended due to its cost-benefit relationship is " +
-          Printers.suggested_printer.to_s)
-        when '/stop'
-          bot.api.send_message(chat_id: message.chat.id, text: "#{message.from.first_name}.
-          Thanks for contact us. Feel free to call us whenever you need!.")
         else
           bot.api.send_message(chat_id: message.chat.id, text: "you choose an invalid option.
             if you do not follow the links in the chat please feel free to call us and we´ll give you
