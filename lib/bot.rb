@@ -33,18 +33,13 @@ class Bot
         when '/stop'
           bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
             One of our assistants will call you to be at your disposal or feel free to call us whenever you need!.")
-        when '/Canon'
-          bot.api.send_message(chat_id: message.chat.id, text: "You can click on our best canon product in our web
-            'https://tecnomaniajl.com/Impresora-Canon-G4111-Multifuncional-Wif-Adf-Original-5-Tintas-p217378167'
-             if you want to buy the product. Thanks for contact us")
-        when '/Epson', '/recommended'
-          bot.api.send_message(chat_id: message.chat.id, text: "You can click on our bestseller epson product in our web
-            'https://tecnomaniajl.com/Impresora-EPSON-L3150-Multifuncional-p236063653'
-             if you want to buy the product. Thanks for contact us")
-        when '/HP'
-          bot.api.send_message(chat_id: message.chat.id, text: "You can click on our most complete HP printer in our web
-            'https://tecnomaniajl.com/Impresora-Hp-7740-Multifuncional-p239999030'
-             if you want to buy the product. Thanks for contact us")
+        when '/Canon', '/HP', '/Epson'
+          bot.api.send_message(chat_id: message.chat.id, text: "You can click on our in our web page
+            'https://tecnomaniajl.com' if you want to buy any of those producst. Thanks for contact us")
+        when '/recommended'
+          bot.api.send_message(chat_id: message.chat.id, text: "You can click on our bestseller epson product
+            'https://tecnomaniajl.com/Impresora-EPSON-L3150-Multifuncional-p236063653' to finish the sale. 
+            Thanks for contact us")
         else
           bot.api.send_message(chat_id: message.chat.id, text: "you choose an invalid option.
             if you do not follow the links in the chat please feel free to call us and we´ll give you
