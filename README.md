@@ -1,5 +1,5 @@
 # Telegram-Bot
-![screenshot]()
+![screenshot](https://github.com/cgcarlosg/Telegram-Bot/blob/Feature/assets/capstone2020Bot.jpg)
 
 Telegram-bot, One of the most popular attributes from Telegram it's the possibility of creating your own bot that does whatever you want. On this occasion, I have created a bot that can be added to a store as a tool that helps to make printer sales and through the "Bot" you will be offered the best variety of products at the time of communicating through Telegram with the account of the company that could use this "Bot".
 
