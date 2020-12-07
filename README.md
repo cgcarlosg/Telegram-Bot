@@ -28,7 +28,7 @@ Run the program with this code : bundle exec ruby bin/main.rb
 Stop the program with: "Ctrl + C" (Windows or Linux) / "Command + C"(Apple)
 
 ## 📝 How to interact with the bot?
-After doing the sutup go to your page of telegram
+After doing the setup go to your page of telegram
 
 Search for: @capstone2020Bot
 
