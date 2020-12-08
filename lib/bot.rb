@@ -21,7 +21,7 @@ class Bot
       bot.listen do |message|
         case message.text
         when '/start'
-          if !real_user?(message.chat.id)
+          unless real_user?(message.chat.id)
             text = "Hi #{message.from.first_name}.
             anytime you can write or select '/stop' for personal assistance or '/recommended' to give
             you the best printer we have. Otherwise this is a list of available printer that could be
