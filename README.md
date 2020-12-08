@@ -30,7 +30,7 @@ Stop the program with: "Ctrl + C" (Windows or Linux) / "Command + C"(Apple)
 ## 📝 How to interact with the bot?
 After doing the setup go to your page of telegram
 
-Search for: @capstone2020Bot
+Search for: @printerfinderBot
 
 Click on Start
 
