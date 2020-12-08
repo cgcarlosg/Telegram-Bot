@@ -21,11 +21,11 @@ class Bot
         when '/start'
           text = ''
           if real_user?(message.chat.id) 
-            text = "press '/stop' to finish the chat" 
-          else 
-            text =  "Hi #{message.from.first_name}.
-            anytime you can write or select '/stop' for personal assistance or '/recommended' to give 
-            you the best printer we have. Otherwise this is a list of available printer that could be 
+            text = "press '/stop' to finish the chat"
+          else
+            text = "Hi #{message.from.first_name}.
+            anytime you can write or select '/stop' for personal assistance or '/recommended' to give
+            you the best printer we have. Otherwise this is a list of available printer that could be
             the ones you are looking for: " + Printers.available.to_s
             bot.api.send_message(chat_id: message.chat.id, text: text)
           end
@@ -54,6 +54,4 @@ def real_user?(chat_id = nil)
   end
   false
 end
-
-
 # rubocop:enable Metrics/MethodLength

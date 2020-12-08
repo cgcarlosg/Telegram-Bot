@@ -6,14 +6,14 @@ RSpec.describe Telegram::Bot do
   end
 end
 
-describe '#printerfinder_bot' do  
-  let(:chat_text) {  }
+describe '#printerfinder_bot' do
+  let(:chat_text) {}
   it 'should not return a message if argument is empty' do
     expect(chat_text).to eql(nil)
   end
 end
 
-describe '#real_user?' do  
+describe '#real_user?' do
   let(:chat_id) { '123456789' }
   let(:chat_text) { [] }
   it 'should return false if there is not any chat_id valid' do
