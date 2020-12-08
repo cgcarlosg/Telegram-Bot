@@ -13,14 +13,15 @@ class Bot
       printerfinder_bot
     end
   end
+
   def printerfinder_bot(initial_chat = [])
     @chat_text = initial_chat
+
     Telegram::Bot::Client.run(token) do |bot|
       bot.listen do |message|
         case message.text
         when '/start'
-          text = ''
-          if real_user?(message.chat.id) 
+          if real_user?(message.chat.id)
             text = "press '/stop' to finish the chat"
           else
             text = "Hi #{message.from.first_name}.
