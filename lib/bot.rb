@@ -5,30 +5,30 @@ require_relative '../lib/printers'
 
 # :nodoc:
 class Bot
-  attr_reader :token
+  attr_reader :token, :chat_text
 
   def initialize
     @token = '1444483778:AAFVjyColdttvofTA6ArPJQx3JhN1Oy2azc'
     begin
       printerfinder_bot
-    rescue Telegram::Bot::Exceptions::ResponseError => e
-      puts "#{e} Bot not connected. Please try again"
     end
   end
-
-  def printerfinder_bot
+  def printerfinder_bot(initial_chat = [])
+    @chat_text = initial_chat
     Telegram::Bot::Client.run(token) do |bot|
       bot.listen do |message|
         case message.text
         when '/start'
-          bot.api.send_message(chat_id: message.chat.id, text: "Hello #{message.from.first_name}.
-            I´ll show you the best printer options you may need based on the max number of printed pages.
-            If you want my help please select '/yes' or /stop to finish this chat")
-        when '/yes'
-          bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
-            Select '/stop' for personal assistance or '/recommended' to give you the best printer we have.
-            Otherwise choose from our list the model you are looking for: " +
-            Printers.available.to_s)
+          text = ''
+          if real_user?(message.chat.id) 
+            text = "press '/stop' to finish the chat" 
+          else 
+            text =  "Hi #{message.from.first_name}.
+            anytime you can write or select '/stop' for personal assistance or '/recommended' to give 
+            you the best printer we have. Otherwise this is a list of available printer that could be 
+            the ones you are looking for: " + Printers.available.to_s
+            bot.api.send_message(chat_id: message.chat.id, text: text)
+          end
         when '/stop'
           bot.api.send_message(chat_id: message.chat.id, text: "Thanks #{message.from.first_name}.
             One of our assistants will call you to be at your disposal or feel free to call us whenever you need!.")
@@ -47,4 +47,13 @@ class Bot
     end
   end
 end
+
+def real_user?(chat_id = nil)
+  chat_text.each do |id|
+    return true if chat_id == id
+  end
+  false
+end
+
+
 # rubocop:enable Metrics/MethodLength
